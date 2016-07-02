@@ -2,7 +2,7 @@
 #Sync all Git repositories in a given directory of repositories
 #GitSync is licensed under the GNU GPL v3
 
-VERSION=0.0.1
+VERSION=0.0.2
 
 function out #Output to screen (optional) and log to file
 {
@@ -105,6 +105,12 @@ function checkConf #Make sure configuration file contains all required variables
 	then
 		echo "Configuration variable 'repoDir' not found or empty."
 		exit 2
+	else
+		if [ ! -d $repoDir ]
+		then
+			echo "repoDir '$repoDir' does not exist."
+			exit 3
+		fi
 	fi
 
 	if [ "$logFile" == "" ]

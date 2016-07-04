@@ -5,12 +5,14 @@ Sync all Git repositories in a directory of repositories.
 
 ## Usage
 
-First downlload the script `gitsync.sh` and now create a file named `cupcake.sync` (for example). Now edit this file and add the following to it:
+First downlload the script `bash gitsync.bash` and now create a file named `cupcake.sync` (for example). Now edit this file and add the following to it:
 
 ````
 repoDir="" #The directory of repositories you wish to sync
 logFile="" #The file you wish to log to, set to `NONE` if you don't want logging
 ````
+
+Now run `bash gitsync.bash cupcake.sync`.
 
 ## Dependancies
 

@@ -2,14 +2,14 @@
 #Sync all Git repositories in a given directory of repositories
 #GitSync is licensed under the GNU GPL v3
 
-VERSION=0.0.4
+VERSION=0.0.3
 
 function out #Output to screen (optional) and log to file
 {
 
 	msg=$1
 	silent=$2
-	if [ $silent = false ]
+	if [ $silent == false ]
 	then
 		echo $msg
 	fi
@@ -103,7 +103,7 @@ function syncRepos #Sync repositories
 function checkConf #Make sure configuration file contains all required variables
 {
 
-	if [ "$repoDir" = "" ]
+	if [ "$repoDir" == "" ]
 	then
 		echo "Configuration variable 'repoDir' not found or empty."
 		exit 2
@@ -115,7 +115,7 @@ function checkConf #Make sure configuration file contains all required variables
 		fi
 	fi
 
-	if [ "$logFile" = "" ]
+	if [ "$logFile" == "" ]
 	then
 		echo "Configuration variable 'logFile' not found or empty."
 		exit 2
@@ -139,10 +139,10 @@ function hi #Boilerplate stuff
 function init #Check for config, if exists then check conf and if good - sync repos
 {
 
-	if [ $# = 0 ]
+	if [ $# == 0 ]
 	then
 		echo "No configuration file specified."
-	elif [ $# = 1 ]
+	elif [ $# == 1 ]
 	then
 		if [ -f "$1" ]
 		then

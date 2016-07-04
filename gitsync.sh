@@ -2,7 +2,7 @@
 #Sync all Git repositories in a given directory of repositories
 #GitSync is licensed under the GNU GPL v3
 
-VERSION=0.0.2
+VERSION=0.0.3
 
 function out #Output to screen (optional) and log to file
 {
@@ -67,7 +67,8 @@ function syncRepos #Sync repositories
 		boilerLog
 	fi
 
-	out "Number of repositories: $(getRepoCount)" "false"
+	repos=$(getRepoCount)
+	out "Number of repositories: $repos" "false"
 	out "Repository directory: $repoDir" "false"
 	if [ "$logFile" != "NONE" ]
 	then
@@ -80,12 +81,13 @@ function syncRepos #Sync repositories
 	out "" "false"
 	out "Syncing repositories..." "false"
 	cd "$repoDir"
-
+	count=0
 	for repo in $(ls $repoDir)
 	do
 		if [ -d $repo ]
 		then
-			out "Syncing repository '$repo'..." "false"
+			count=$(($count+1))
+			out "Syncing repository '$repo'... [$count/$repos]" "false"
 			cd $repo
 			git pull
 			cd ..

@@ -2,7 +2,7 @@
 #Sync all Git repositories in a given directory of repositories
 #GitSync is licensed under the GNU GPL v3
 
-VERSION=0.0.3
+VERSION=0.0.4
 
 function out #Output to screen (optional) and log to file
 {
@@ -61,11 +61,15 @@ function getRepoCount #Get number of repositories
 function syncRepos #Sync repositories
 {
 
+	filenameOfConfig=$1
+
 	if [ $logFile != "NONE" ]
 	then
 		removeOldLogFile
 		boilerLog
 	fi
+
+	out "Sync file is: $filenameOfConfig" "false"
 
 	repos=$(getRepoCount)
 	out "Number of repositories: $repos" "false"
@@ -148,7 +152,7 @@ function init #Check for config, if exists then check conf and if good - sync re
 		then
 			source "$1"
 			checkConf
-			syncRepos
+			syncRepos "$1"
 		else
 			echo "Configuration file '$1' not found."
 			exit 1

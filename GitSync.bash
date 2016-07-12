@@ -127,7 +127,7 @@ function checkConf #Make sure configuration file contains all required variables
 
 }
 
-function hi #Boilerplate stuff
+function showWelcomeMessage #Boilerplate stuff
 {
 
 	clear
@@ -163,5 +163,5 @@ function init #Check for config, if exists then check conf and if good - sync re
 
 }
 
-hi
+showWelcomeMessage
 init $@
